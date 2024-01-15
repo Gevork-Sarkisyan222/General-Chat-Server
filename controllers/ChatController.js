@@ -13,6 +13,7 @@ export const createMessage = async (req, res) => {
   try {
     const message = new Message({
       message: req.body.message,
+      image: req.body.image,
       user: req.userId,
     });
 
