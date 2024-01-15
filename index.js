@@ -19,6 +19,7 @@ import {
 } from './controllers/ChatController.js';
 import mongoose from 'mongoose';
 import checkAuth from './utils/checkAuth.js';
+import multer from 'multer';
 
 const app = express();
 const connect = () => {
@@ -34,8 +35,25 @@ const connect = () => {
     });
 };
 
+const storage = multer.diskStorage({
+  destination: (_, __, cb) => {
+    cb(null, 'uploads');
+  },
+  filename: (_, file, cb) => {
+    cb(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage });
+
 app.use(express.json());
 app.use(cors());
+app.use('/uploads', express.static('uploads'));
+
+// load file
+app.post('/upload', upload.single('image'), (req, res) => {
+  res.json({ url: `/uploads/${req.file.originalname}` });
+});
 
 // sign up - регестрация
 app.post('/signUp', signUp);
