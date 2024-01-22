@@ -47,7 +47,14 @@ const connect = () => {
 // const upload = multer({ storage });
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+  origin: 'http://localhost:3000', // Укажите ваш фронтенд-домен
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+  optionsSuccessStatus: 204,
+};
+
+app.use(cors(corsOptions));
 // app.use('/uploads', express.static('uploads'));
 
 // load file
