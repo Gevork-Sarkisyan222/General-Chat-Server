@@ -88,7 +88,7 @@ app.put('/user/role/admin/:id', makeAdmin);
 // remove admin only can do it Super Admin
 app.put('/user/role/admin/lower/:id', removeAdmin);
 
-// get All Messages
+// get all Messages
 app.get('/chat/message', getAllMessages);
 
 // create Message
