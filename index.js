@@ -48,7 +48,7 @@ const connect = () => {
 
 app.use(express.json());
 const corsOptions = {
-  origin: 'http://localhost:3000', // Укажите ваш фронтенд-домен
+  origin: '*', // Укажите ваш фронтенд-домен
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -61,6 +61,8 @@ app.use(cors(corsOptions));
 // app.post('/upload', upload.single('image'), (req, res) => {
 //   res.json({ url: `/uploads/${req.file.originalname}` });
 // });
+
+// commit
 
 // sign up - регестрация
 app.post('/signUp', signUp);
