@@ -40,7 +40,7 @@ export const updateMessage = async (req, res) => {
         return res.status(404).json('Сообщение не найдено');
       }
 
-      return res.status(200).json('Сообщение успешно обновлено');
+      return res.status(200).json('Сообщение успешно обновлено !');
     } else {
       return res.status(400).json('Вы не можете обновить чужое сообшение');
     }
