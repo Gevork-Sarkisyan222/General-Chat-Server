@@ -19,7 +19,6 @@ import {
 } from './controllers/ChatController.js';
 import mongoose from 'mongoose';
 import checkAuth from './utils/checkAuth.js';
-import multer from 'multer';
 
 const app = express();
 const connect = () => {
@@ -34,17 +33,6 @@ const connect = () => {
       throw err;
     });
 };
-
-// const storage = multer.diskStorage({
-//   destination: (_, __, cb) => {
-//     cb(null, 'uploads');
-//   },
-//   filename: (_, file, cb) => {
-//     cb(null, file.originalname);
-//   },
-// });
-
-// const upload = multer({ storage });
 
 app.use(express.json());
 const corsOptions = {

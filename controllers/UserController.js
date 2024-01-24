@@ -89,7 +89,24 @@ export const getMe = async (req, res) => {
 export const getAllUsers = async (req, res) => {
   try {
     const users = await User.find();
-    res.status(200).json(users);
+
+    const sortedUsers = users.sort((a, b) => {
+      if (a.role === 'Супер Админ' && b.role !== 'Супер Админ') {
+        return -1;
+      } else if (a.role !== 'Супер Админ' && b.role === 'Супер Админ') {
+        return 1;
+      }
+
+      if (a.role === 'Администратор' && b.role !== 'Администратор') {
+        return -1;
+      } else if (a.role !== 'Администратор' && b.role === 'Администратор') {
+        return 1;
+      }
+
+      return 0;
+    });
+
+    res.status(200).json(sortedUsers);
   } catch (err) {
     res.status(400).json('Не удалось найти пользователей');
   }

@@ -14,10 +14,10 @@ export default (req, res, next) => {
         req.userId = decoded.id;
         next();
       } catch (err) {
-        res.status(400).json('Нет доступа');
+        res.status(403).json('Нет доступа');
       }
     }
   } catch (err) {
-    res.status(400).json('У вас нет доступа');
+    res.status(403).json('У вас нет доступа');
   }
 };

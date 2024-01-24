@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema(
     },
     role: {
       type: String,
-      default: 'Участник', // Администратор
+      default: 'Участник', // Администратор или Супер Администратор
     },
   },
   {
